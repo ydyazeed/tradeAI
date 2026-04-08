@@ -3,7 +3,7 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "alembic upgrade head && python -c 'from app.main import app; print(\"App import OK\")' && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --log-level info"
+startCommand = "alembic upgrade head 2>&1 && python -u -c 'from app.main import app; print(\"App import OK\")' 2>&1 && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --log-level info 2>&1"
 healthcheckPath = "/health"
 healthcheckTimeout = 120
 restartPolicyType = "ON_FAILURE"
