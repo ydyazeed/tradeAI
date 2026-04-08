@@ -32,18 +32,17 @@ class Settings(BaseSettings):
     # App
     APP_ENV: str = "development"
     DEBUG: bool = True
-    CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:3001"]
+    CORS_ORIGINS: str = '["http://localhost:3000","http://localhost:3001"]'
 
-    @field_validator("CORS_ORIGINS", mode="before")
-    @classmethod
-    def parse_cors(cls, v):
-        # Handles both JSON array string and comma-separated string from Railway
-        if isinstance(v, str):
-            v = v.strip()
-            if v.startswith("["):
-                return json.loads(v)
-            return [origin.strip() for origin in v.split(",")]
-        return v
+    @property
+    def cors_origins_list(self) -> list[str]:
+        """Parse CORS_ORIGINS from env as JSON array or comma-separated string."""
+        v = self.CORS_ORIGINS.strip()
+        if not v:
+            return ["http://localhost:3000"]
+        if v.startswith("["):
+            return json.loads(v)
+        return [origin.strip() for origin in v.split(",") if origin.strip()]
 
     @property
     def is_production(self) -> bool:
