@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+dist/
+*.egg-info/
+
+# Poetry
+poetry.lock
+
+# Environment — NEVER commit secrets
+.env
+.env.*
+!.env.example
+
+# Alembic
+alembic/versions/__pycache__/
+
+# Logs
+*.log
+/tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Frontend (has its own .gitignore, listed here for root-level git)
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
