@@ -27,7 +27,7 @@ export default function LoginPage() {
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-primary)" }}>
-      <div style={{ width: 400 }}>
+      <div style={{ width: "100%", maxWidth: 400, padding: "0 20px" }}>
         <div style={{ textAlign: "center", marginBottom: 32 }}>
           <div style={{ fontWeight: 700, fontSize: 20, letterSpacing: "0.1em", marginBottom: 8 }}>TRADEAI</div>
           <div style={{ color: "var(--text-muted)", fontSize: 12 }}>SIGN IN TO YOUR ACCOUNT</div>

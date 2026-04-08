@@ -50,7 +50,7 @@ export default function OverviewPage() {
         <h1 style={{ fontSize: 20, fontWeight: 700, marginTop: 4 }}>MARKET OVERVIEW</h1>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+      <div className="grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
         {/* Market Overview */}
         <div className="card">
           <div className="card-header">
@@ -62,7 +62,7 @@ export default function OverviewPage() {
               No symbols tracked. Go to Signals to add stocks.
             </div>
           ) : (
-            <table>
+            <div className="table-wrap"><table>
               <thead><tr><th>SYMBOL</th><th>CLOSE</th><th>VOLUME</th><th></th></tr></thead>
               <tbody>
                 {symbols.map((s: any) => {
@@ -77,7 +77,7 @@ export default function OverviewPage() {
                   );
                 })}
               </tbody>
-            </table>
+            </table></div>
           )}
         </div>
 
@@ -89,7 +89,7 @@ export default function OverviewPage() {
           {symbols.length === 0 ? (
             <div style={{ color: "var(--text-muted)", fontSize: 13, padding: "16px 0", textAlign: "center" }}>No signals yet.</div>
           ) : (
-            <table>
+            <div className="table-wrap"><table>
               <thead><tr><th>SYMBOL</th><th>SIGNAL</th><th>CONF.</th><th>INTRADAY</th><th>SWING</th><th>LONG TERM</th><th></th></tr></thead>
               <tbody>
                 {symbols.map((s: any) => {
@@ -112,7 +112,7 @@ export default function OverviewPage() {
                   );
                 })}
               </tbody>
-            </table>
+            </table></div>
           )}
         </div>
       </div>
@@ -122,7 +122,7 @@ export default function OverviewPage() {
         <div className="card-header">
           <span style={{ fontSize: 11, color: "var(--text-muted)", letterSpacing: "0.1em" }}>03  SYSTEM STATUS</span>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, fontSize: 13 }}>
+        <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, fontSize: 13 }}>
           <div>
             <div style={{ color: "var(--text-muted)", fontSize: 11, marginBottom: 4 }}>DATABASE</div>
             <div style={{ color: health?.checks?.database?.status === "up" ? "var(--signal-buy)" : "var(--signal-sell)" }}>

@@ -85,7 +85,7 @@ export default function SettingsPage() {
         <div className="card-header">
           <span style={{ fontSize: 11, color: "var(--text-muted)", letterSpacing: "0.1em" }}>01  PROFILE</span>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, fontSize: 13 }}>
+        <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, fontSize: 13 }}>
           <div>
             <div style={{ color: "var(--text-muted)", fontSize: 11, marginBottom: 4 }}>EMAIL</div>
             <div>{user?.email || "—"}</div>

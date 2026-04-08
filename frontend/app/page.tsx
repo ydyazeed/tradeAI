@@ -4,32 +4,32 @@ export default function LandingPage() {
   return (
     <div style={{ minHeight: "100vh", background: "var(--bg-primary)" }}>
       {/* Nav */}
-      <nav style={{ borderBottom: "1px solid var(--border)", padding: "16px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <nav style={{ borderBottom: "1px solid var(--border)", padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span style={{ fontWeight: 700, fontSize: 16, letterSpacing: "0.1em" }}>TRADEAI</span>
-        <div style={{ display: "flex", gap: 24 }}>
-          <Link href="/login" style={{ color: "var(--text-secondary)", fontSize: 13, textDecoration: "none" }}>LOGIN</Link>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <Link href="/login" style={{ color: "var(--text-secondary)", fontSize: 12, textDecoration: "none", letterSpacing: "0.05em" }}>LOGIN</Link>
           <Link href="/register" className="btn" style={{ textDecoration: "none" }}>REGISTER</Link>
         </div>
       </nav>
 
       {/* Hero */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 32px 60px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 20px 60px" }}>
+        <div className="grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
           <div>
             <div style={{ color: "var(--text-muted)", fontSize: 11, letterSpacing: "0.2em", marginBottom: 16 }}>01  AI-POWERED TRADING SIGNALS</div>
-            <h1 style={{ fontSize: 48, fontWeight: 700, lineHeight: 1.1, marginBottom: 24 }}>
+            <h1 style={{ fontSize: "clamp(32px, 6vw, 48px)", fontWeight: 700, lineHeight: 1.1, marginBottom: 24 }}>
               TRADE<br />SMARTER
             </h1>
             <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.8, marginBottom: 32, maxWidth: 400 }}>
               Market data ingestion, technical indicators, and Claude AI-powered BUY/SELL/HOLD signals with full audit trails.
             </p>
-            <div style={{ display: "flex", gap: 12 }}>
-              <Link href="/register" className="btn" style={{ textDecoration: "none" }}>GET STARTED →</Link>
-              <Link href="/login" className="btn-ghost btn" style={{ textDecoration: "none" }}>VIEW DEMO</Link>
+            <div className="mobile-stack" style={{ display: "flex", gap: 12 }}>
+              <Link href="/register" className="btn" style={{ textDecoration: "none", textAlign: "center" }}>GET STARTED →</Link>
+              <Link href="/login" className="btn-ghost btn" style={{ textDecoration: "none", textAlign: "center" }}>VIEW DEMO</Link>
             </div>
           </div>
           {/* Sample signal JSON */}
-          <div className="card" style={{ fontFamily: "monospace", fontSize: 13 }}>
+          <div className="card" style={{ fontFamily: "monospace", fontSize: 13, overflowX: "auto" }}>
             <div style={{ color: "var(--text-muted)", fontSize: 11, marginBottom: 12 }}>SAMPLE SIGNAL OUTPUT</div>
             <pre style={{ color: "var(--text-secondary)", margin: 0, lineHeight: 1.8 }}>
 {`{
@@ -48,7 +48,7 @@ export default function LandingPage() {
         {/* Features */}
         <div style={{ marginTop: 80, borderTop: "1px solid var(--border)", paddingTop: 48 }}>
           <div style={{ color: "var(--text-muted)", fontSize: 11, letterSpacing: "0.2em", marginBottom: 32 }}>02  FEATURES</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+          <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
             {[
               { n: "01", title: "MARKET DATA", desc: "Daily OHLCV from yfinance. RSI, MACD, EMA, Bollinger Bands via pandas-ta." },
               { n: "02", title: "AI SIGNALS", desc: "Claude Haiku/Sonnet generates structured BUY/SELL/HOLD signals with confidence." },
@@ -60,14 +60,6 @@ export default function LandingPage() {
                 <div style={{ color: "var(--text-secondary)", fontSize: 13, lineHeight: 1.6 }}>{f.desc}</div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Stack */}
-        <div style={{ marginTop: 48, borderTop: "1px solid var(--border)", paddingTop: 48 }}>
-          <div style={{ color: "var(--text-muted)", fontSize: 11, letterSpacing: "0.2em", marginBottom: 16 }}>03  STACK</div>
-          <div style={{ color: "var(--text-secondary)", fontSize: 13 }}>
-            Python · FastAPI · SQLAlchemy 2.0 · PostgreSQL · Alembic · APScheduler · Anthropic Claude · yfinance · pandas-ta · Next.js · shadcn/ui
           </div>
         </div>
       </div>

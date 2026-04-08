@@ -172,12 +172,12 @@ export default function SignalsPage() {
   return (
     <div>
       {/* Header */}
-      <div style={{ marginBottom: 20, display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+      <div style={{ marginBottom: 20 }}>
         <div>
           <div style={{ color: "var(--text-muted)", fontSize: 11, letterSpacing: "0.15em" }}>DASHBOARD</div>
           <h1 style={{ fontSize: 20, fontWeight: 700, marginTop: 4 }}>AI SIGNALS</h1>
         </div>
-        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+        <div className="mobile-stack" style={{ display: "flex", gap: 10, alignItems: "center", marginTop: 12 }}>
           <button className="btn-ghost btn" onClick={() => { setShowAdd(!showAdd); setAddStep("idle"); setAddMsg(""); }}>
             {showAdd ? "✕ CANCEL" : "+ ADD STOCK"}
           </button>
@@ -243,7 +243,7 @@ export default function SignalsPage() {
           onClick={(e) => { if (e.target === e.currentTarget && addStep === "idle") { setShowAdd(false); } }}
           style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 50, display: "flex", alignItems: "center", justifyContent: "center" }}
         >
-          <div style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-active)", width: 480, padding: 24 }}>
+          <div style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-active)", width: "90%", maxWidth: 480, padding: 24 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
               <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.1em" }}>ADD NEW STOCK</span>
               {addStep === "idle" && (
@@ -342,7 +342,7 @@ export default function SignalsPage() {
             </span>
             <span style={{ fontSize: 11, color: "var(--text-muted)" }}>{signal.timestamp?.slice(0, 10)}</span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 24, alignItems: "start" }}>
+          <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 24, alignItems: "start" }}>
             <div>
               <span className={dirClass} style={{ fontSize: 36, fontWeight: 700 }}>{signal.direction}</span>
               <div style={{ marginTop: 6 }}>
@@ -389,7 +389,7 @@ export default function SignalsPage() {
 
       {/* Timeframe analysis */}
       {signal && Object.keys(ta).length > 0 && (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 16 }}>
+        <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 16 }}>
           {[
             { key: "intraday", label: "03  INTRADAY", horizon: ta.intraday?.horizon || "Same day" },
             { key: "swing", label: "04  SWING TRADE", horizon: ta.swing?.horizon || "3-10 days" },
@@ -419,7 +419,7 @@ export default function SignalsPage() {
 
       {/* Indicators + History row */}
       {signal && !loading && (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 12 }}>
+        <div className="grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 12 }}>
           {/* Indicators */}
           <div className="card">
             <div className="card-header">
@@ -445,7 +445,7 @@ export default function SignalsPage() {
             {history.length === 0 ? (
               <div style={{ color: "var(--text-muted)", fontSize: 13 }}>No history yet.</div>
             ) : (
-              <table>
+              <div className="table-wrap"><table>
                 <thead><tr><th>DATE</th><th>DIR</th><th>CONF</th><th>INTRADAY</th><th>SWING</th><th>LONG TERM</th><th>MODEL</th></tr></thead>
                 <tbody>
                   {history.map((s: any) => {
@@ -463,7 +463,7 @@ export default function SignalsPage() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table></div>
             )}
           </div>
         </div>

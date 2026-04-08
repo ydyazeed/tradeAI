@@ -65,7 +65,7 @@ export default function AuditPage() {
       </div>
 
       {/* Platform summary */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 20 }}>
+      <div className="grid-4" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 20 }}>
         {[
           { label: "TOTAL USERS", value: userStats.length },
           { label: "TOTAL REQUESTS", value: totalRequests.toLocaleString() },
@@ -105,7 +105,7 @@ export default function AuditPage() {
               {userStats.map((u: any) => (
                 <div key={u.user_id} className="card">
                   {/* User header */}
-                  <div style={{ display: "grid", gridTemplateColumns: "auto 1fr auto auto auto auto", gap: 20, alignItems: "center", marginBottom: 14 }}>
+                  <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "auto 1fr auto auto auto auto", gap: 20, alignItems: "center", marginBottom: 14 }}>
                     <div>
                       <div style={{ fontWeight: 600, fontSize: 14 }}>{u.email}</div>
                       <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
@@ -179,7 +179,7 @@ export default function AuditPage() {
           {signalAudits.length === 0 ? (
             <div style={{ color: "var(--text-muted)", fontSize: 13, padding: "16px 0" }}>No signals generated yet.</div>
           ) : (
-            <table>
+            <div className="table-wrap"><table>
               <thead>
                 <tr><th>TIMESTAMP</th><th>TOKENS IN</th><th>TOKENS OUT</th><th>LATENCY</th><th>COST</th><th></th></tr>
               </thead>
@@ -215,7 +215,7 @@ export default function AuditPage() {
                   </>
                 ))}
               </tbody>
-            </table>
+            </table></div>
           )}
         </div>
       )}
@@ -237,7 +237,7 @@ export default function AuditPage() {
           {filteredLogs.length === 0 ? (
             <div style={{ color: "var(--text-muted)", fontSize: 13 }}>No request logs found.</div>
           ) : (
-            <table>
+            <div className="table-wrap"><table>
               <thead>
                 <tr><th>TIME</th><th>USER</th><th>METHOD</th><th>ENDPOINT</th><th>STATUS</th><th>LATENCY</th></tr>
               </thead>
@@ -268,7 +268,7 @@ export default function AuditPage() {
                   );
                 })}
               </tbody>
-            </table>
+            </table></div>
           )}
         </div>
       )}
