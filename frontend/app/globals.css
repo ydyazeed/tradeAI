@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1e1e1e;
+  --border: #2a2a2a;
+  --border-active: #525252;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #52525b;
+  --signal-buy: #22c55e;
+  --signal-sell: #ef4444;
+  --signal-hold: #eab308;
+}
+
+* { border-radius: 0 !important; box-sizing: border-box; }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", monospace;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular { font-variant-numeric: tabular-nums; }
+.buy { color: var(--signal-buy); }
+.sell { color: var(--signal-sell); }
+.hold { color: var(--signal-hold); }
+.buy-bg { background: #052e16; border: 1px solid var(--signal-buy); }
+.sell-bg { background: #350a0a; border: 1px solid var(--signal-sell); }
+.hold-bg { background: #352a04; border: 1px solid var(--signal-hold); }
+
+.card { background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px; }
+.card:hover { border-color: var(--border-active); }
+.card-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.cursor::after { content: "█"; animation: blink 1s step-end infinite; }
+
+.btn { background: var(--text-primary); color: var(--bg-primary); padding: 6px 12px; font-family: inherit; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border: none; cursor: pointer; }
+.btn:hover { background: var(--text-secondary); }
+.btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--border-active); color: var(--text-primary); background: transparent; }
+
+.input { background: var(--bg-tertiary); border: 1px solid var(--border); color: var(--text-primary); padding: 8px 12px; font-family: inherit; font-size: 14px; width: 100%; outline: none; }
+.input:focus { border-color: var(--border-active); }
+.input::placeholder { color: var(--text-muted); }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead { border-bottom: 1px solid var(--border); }
+th { color: var(--text-muted); font-weight: 400; text-align: left; padding: 8px 12px; text-transform: uppercase; font-size: 11px; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--bg-tertiary); }
+tr:hover td { background: var(--bg-tertiary); }
