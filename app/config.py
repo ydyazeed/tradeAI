@@ -9,6 +9,14 @@ class Settings(BaseSettings):
     # Database
     DATABASE_URL: str = "postgresql+asyncpg://tradeai:tradeai_dev@localhost:5433/tradeai"
 
+    @field_validator("DATABASE_URL", mode="before")
+    @classmethod
+    def fix_db_driver(cls, v):
+        # Railway provides postgresql:// but asyncpg needs postgresql+asyncpg://
+        if isinstance(v, str) and v.startswith("postgresql://"):
+            v = v.replace("postgresql://", "postgresql+asyncpg://", 1)
+        return v
+
     # JWT
     JWT_SECRET: str = "dev-secret-change-in-production"
     JWT_ALGORITHM: str = "HS256"
