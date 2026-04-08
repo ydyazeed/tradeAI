@@ -9,6 +9,7 @@ dist/
 
 # Poetry
 poetry.lock
+# requirements.txt is committed so Docker can build without Poetry
 
 # Environment — NEVER commit secrets
 .env
